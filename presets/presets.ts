@@ -11,6 +11,7 @@ import Markdown from 'vite-plugin-vue-markdown'
 import Prism from 'markdown-it-prism';
 import ViteFonts from 'vite-plugin-fonts';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
+// @ts-ignore
 import LinkAttributes from 'markdown-it-link-attributes';
 import { ConfigEnv } from 'vite';
 import { resolve } from 'path';
@@ -26,7 +27,8 @@ export default (env: ConfigEnv) => {
     svgLoader(),
     AutoImport({
       dts: './src/auto-imports.d.ts',
-      imports: ['vue', 'pinia', 'vue-router', 'vue-i18n', , '@vueuse/core'],
+      // @ts-ignore
+      imports: ['vue', 'pinia', 'vue-router', 'vue-i18n', '@vueuse/core'],
       // Generate corresponding .eslintrc-auto-import.json file.
       // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
       eslintrc: {
