@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     EnProcess: typeof import('./components/EnProcess.md')['default']
+    GSTC: typeof import('./components/GSTC.vue')['default']
     IAkarIconsGithubFill: typeof import('~icons/akar-icons/github-fill')['default']
     ILaLanguage: typeof import('~icons/la/language')['default']
     IMdiContentDuplicate: typeof import('~icons/mdi/content-duplicate')['default']

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import zhCn from 'element-plus/lib/locale/lang/zh-cn';
+import zhCn from "element-plus/lib/locale/lang/zh-cn";
 
 const locale = zhCn;
 </script>
@@ -10,5 +10,4 @@ const locale = zhCn;
       <router-view></router-view>
     </el-config-provider>
   </div>
-  <TheFooter></TheFooter>
 </template>

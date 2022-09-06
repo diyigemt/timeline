@@ -1,12 +1,12 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 
 const theme = defineStore({
   // 这里的id必须为唯一ID
-  id: 'theme',
+  id: "theme",
   state: () => {
     return {
-      themeType: '亮蓝色',
-      themeColor: '#2080F0FF',
+      themeType: "亮蓝色",
+      themeColor: "#2080F0FF",
     };
   },
   // 等同于vuex的getter
