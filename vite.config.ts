@@ -1,14 +1,7 @@
-import { defineConfig, loadEnv } from "vite";
-import { resolve } from "path";
-import { ElementPlusResolver, VueUseComponentsResolver } from "unplugin-vue-components/resolvers";
-import OptimizationPersist from "vite-plugin-optimize-persist";
-import PkgConfig from "vite-plugin-package-config";
-import AutoImport from "unplugin-auto-import/vite";
-import Components from "unplugin-vue-components/vite";
-import Icons from "unplugin-icons/vite";
-import IconsResolver from "unplugin-icons/resolver";
-import WindiCSS from "vite-plugin-windicss";
-import presets from "./presets/presets";
+import { defineConfig, loadEnv } from 'vite';
+import { resolve } from 'path';
+import presets from './presets/presets';
+
 // https://vitejs.dev/config/
 export default defineConfig((env) => {
   // env 环境变量
@@ -17,38 +10,11 @@ export default defineConfig((env) => {
   return {
     base: viteEnv.VITE_BASE,
     // 插件
-    plugins: [
-      presets(env),
-      PkgConfig(),
-      OptimizationPersist(),
-      AutoImport({
-        dts: "./src/auto-imports.d.ts",
-        imports: ["vue", "pinia", "vue-router", "@vueuse/core"],
-        // Generate corresponding .eslintrc-auto-import.json file.
-        // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
-        eslintrc: {
-          enabled: true, // Default `false`
-          filepath: "./.eslintrc-auto-import.json", // Default `./.eslintrc-auto-import.json`
-          globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-        },
-        resolvers: [ElementPlusResolver()],
-      }),
-      Components({
-        dts: "./src/components.d.ts",
-        // imports 指定组件所在位置，默认为 src/components
-        dirs: ["src/components/"],
-        resolvers: [ElementPlusResolver(), IconsResolver(), VueUseComponentsResolver()],
-      }),
-      Icons({
-        compiler: "vue3",
-        autoInstall: true,
-      }),
-      WindiCSS(),
-    ],
+    plugins: [presets(env)],
     // 别名设置
     resolve: {
       alias: {
-        "@": resolve(__dirname, "./src"), // 把 @ 指向到 src 目录去
+        '@': resolve(__dirname, './src'), // 把 @ 指向到 src 目录去
       },
     },
     // 服务设置
@@ -60,11 +26,11 @@ export default defineConfig((env) => {
       strictPort: true, // 如果端口已占用直接退出
       // 接口代理
       proxy: {
-        "/api": {
+        '/api': {
           // 本地 8000 前端代码的接口 代理到 8888 的服务端口
-          target: "http://localhost:8888/",
+          target: 'http://localhost:8888/',
           changeOrigin: true, // 允许跨域
-          rewrite: (path) => path.replace("/api/", "/"),
+          rewrite: (path) => path.replace('/api/', '/'),
         },
       },
     },
@@ -72,14 +38,14 @@ export default defineConfig((env) => {
       reportCompressedSize: false,
       // 消除打包大小超过500kb警告
       chunkSizeWarningLimit: 2000,
-      minify: "esbuild",
-      assetsDir: "static/assets",
+      minify: 'esbuild',
+      assetsDir: 'static/assets',
       // 静态资源打包到dist下的不同目录
       rollupOptions: {
         output: {
-          chunkFileNames: "static/js/[name]-[hash].js",
-          entryFileNames: "static/js/[name]-[hash].js",
-          assetFileNames: "static/[ext]/[name]-[hash].[ext]",
+          chunkFileNames: 'static/js/[name]-[hash].js',
+          entryFileNames: 'static/js/[name]-[hash].js',
+          assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
         },
       },
     },
