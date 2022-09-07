@@ -45,7 +45,7 @@ function generateItems() {
   for (let i = 0; i < 10; i++) {
     const m1 = Math.floor(Math.random() * 150);
     const m2 = Math.floor(Math.random() * 150) + 210;
-    const start = GSTC.api.date().hour(7).millisecond(0);
+    const start = GSTC.api.date().startOf("day");
     const id = GSTC.api.GSTCID(i.toString());
     const rowId = GSTC.api.GSTCID(Math.floor(Math.random() * 10).toString());
     items[id] = {
@@ -53,7 +53,7 @@ function generateItems() {
       label: `Item ${i}`,
       rowId,
       time: {
-        start: start.minute(0).second(m1).valueOf(),
+        start: start.second(m1).valueOf(),
         end: start.minute(0).second(m2).valueOf(),
       },
     };
@@ -130,19 +130,40 @@ export default {
         chart: {
           items: generateItems(),
           time: {
-            from: GSTC.api.date().hour(7).minute(0).millisecond(0).valueOf(),
-            to: GSTC.api.date().hour(7).minute(7).millisecond(0).valueOf(),
+            from: GSTC.api.date().startOf("day").valueOf(),
+            to: GSTC.api.date().startOf("day").minute(7).valueOf(),
             zoom: 10,
+            calculatedZoomMode: true,
           },
           calendarLevels: [
             [
               {
                 zoomTo: 200,
-                period: "second",
-                periodIncrement: 30,
+                period: "minute",
+                periodIncrement: 1,
                 main: true,
                 format({ timeStart }) {
                   return timeStart.format("mm:ss");
+                },
+              },
+            ],
+            [
+              {
+                zoomTo: 6,
+                period: "second",
+                main: true,
+                periodIncrement: 1,
+                format({ timeStart }) {
+                  return timeStart.format("s");
+                },
+              },
+              {
+                zoomTo: 200,
+                period: "second",
+                periodIncrement: 10,
+                main: true,
+                format({ timeStart }) {
+                  return timeStart.format("ss");
                 },
               },
             ],
@@ -152,7 +173,6 @@ export default {
           "chart-timeline-items-row-item": [ItemDragEndAction],
         },
       };
-
       state = GSTC.api.stateFromConfig(config);
       globalThis.state = state;
       gstc = GSTC({
@@ -161,22 +181,19 @@ export default {
       });
       globalThis.gstc = gstc;
     });
-
     onBeforeUnmount(() => {
       if (gstc) gstc.destroy();
     });
-
     function updateFirstRow() {
       state.update(`config.list.rows.${GSTC.api.GSTCID("0")}`, (row) => {
         row.label = "Changed dynamically";
         return row;
       });
     }
-
     function changeZoomLevel() {
-      state.update("config.chart.time.zoom", 21);
+      state.update("config.chart.time.calculatedZoomMode", false);
+      state.update("config.chart.time.zoom", 6);
     }
-
     return {
       gstcElement,
       updateFirstRow,
