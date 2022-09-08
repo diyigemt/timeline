@@ -14,6 +14,7 @@ specifiers:
   '@vitejs/plugin-vue-jsx': 2.0.0
   '@vueuse/core': ^8.9.2
   axios: ^0.25.0
+  dayjs: ^1.11.5
   element-plus: ^2.0.1
   eslint: ^8.19.0
   eslint-config-airbnb-base: ^15.0.0
@@ -24,6 +25,7 @@ specifiers:
   gantt-schedule-timeline-calendar: ^3.33.13
   husky: ^7.0.4
   lint-staged: ^12.3.2
+  lodash-es: ^4.17.21
   markdown-it-link-attributes: ^4.0.0
   markdown-it-prism: ^2.2.2
   nprogress: ^0.2.0
@@ -41,6 +43,7 @@ specifiers:
   vite-plugin-optimize-persist: ^0.1.2
   vite-plugin-package-config: ^0.1.1
   vite-plugin-vue-markdown: ^0.21.1
+  vite-plugin-vue-type-imports: ^0.2.1
   vite-plugin-windicss: ^1.8.7
   vite-svg-loader: ^3.4.0
   vue: ^3.2.25
@@ -51,8 +54,10 @@ specifiers:
 dependencies:
   '@vueuse/core': 8.9.4_vue@3.2.37
   axios: 0.25.0
+  dayjs: 1.11.5
   element-plus: 2.2.12_vue@3.2.37
   gantt-schedule-timeline-calendar: 3.33.13
+  lodash-es: 4.17.21
   nprogress: 0.2.0
   pinia: 2.0.18_j6bzmzd4ujpabbp5objtwxyjp4
   prism-theme-vars: 0.2.4
@@ -94,6 +99,7 @@ devDependencies:
   vite-plugin-optimize-persist: 0.1.2_sbwbuqg2fx6cb5xbznkildxyyi
   vite-plugin-package-config: 0.1.1_vite@3.0.5
   vite-plugin-vue-markdown: 0.21.1_vite@3.0.5
+  vite-plugin-vue-type-imports: 0.2.1_vue@3.2.37
   vite-plugin-windicss: 1.8.7_vite@3.0.5
   vite-svg-loader: 3.4.0
   vue-tsc: 0.38.9_typescript@4.7.4
@@ -1774,8 +1780,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /dayjs/1.11.4:
-    resolution: {integrity: sha512-Zj/lPM5hOvQ1Bf7uAvewDaUcsJoI6JmNqmHhHl3nyumwe0XHwt8sWdOVAPACJzCebL8gQCi+K49w7iKWnGwX9g==}
+  /dayjs/1.11.5:
+    resolution: {integrity: sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA==}
     dev: false
 
   /debug/2.6.9:
@@ -1931,7 +1937,7 @@ packages:
       '@types/lodash-es': 4.17.6
       '@vueuse/core': 8.9.4_vue@3.2.37
       async-validator: 4.2.5
-      dayjs: 1.11.4
+      dayjs: 1.11.5
       escape-html: 1.0.3
       lodash: 4.17.21
       lodash-es: 4.17.21
@@ -2680,7 +2686,7 @@ packages:
     resolution: {integrity: sha512-0PfMew9+nfoN27mvPf6ys0+Jc8yJ554mltmkUhHJrwJN3f7esZS6Bn35zZIW5jDgBR1SXv3jmMLyqNqRfqtKWA==}
     dependencies:
       '@neuronet.io/vido': 4.2.15
-      dayjs: 1.11.4
+      dayjs: 1.11.5
       lit-html: 2.3.1
     dev: false
 
@@ -4592,6 +4598,18 @@ packages:
       '@types/markdown-it': 12.2.3
       markdown-it: 13.0.1
       vite: 3.0.5_sass@1.54.4
+    dev: true
+
+  /vite-plugin-vue-type-imports/0.2.1_vue@3.2.37:
+    resolution: {integrity: sha512-DeZ1u38sFWnrEU7ku6Dt7+CbfOfr/xirYILpDx3oYLpCjc6cTpTnH/FS+62bjXBUucjoMy8LE+fR6uaKYgHYsA==}
+    peerDependencies:
+      '@vue/compiler-sfc': ^3.2.24
+      vue: ^3.2.24
+    dependencies:
+      '@babel/types': 7.18.10
+      fast-glob: 3.2.11
+      local-pkg: 0.4.2
+      vue: 3.2.37
     dev: true
 
   /vite-plugin-windicss/1.8.7_vite@3.0.5:

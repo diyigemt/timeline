@@ -5,7 +5,7 @@ const locale = zhCn;
 </script>
 
 <template>
-  <div class="m-5">
+  <div class="p-5">
     <el-config-provider :locale="locale">
       <router-view></router-view>
     </el-config-provider>

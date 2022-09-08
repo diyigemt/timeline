@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from "vite";
 import { resolve } from "path";
 import OptimizationPersist from "vite-plugin-optimize-persist";
 import PkgConfig from "vite-plugin-package-config";
+import VueTypeImports from "vite-plugin-vue-type-imports";
 import presets from "./presets/presets";
 // https://vitejs.dev/config/
 export default defineConfig((env) => {
@@ -11,7 +12,7 @@ export default defineConfig((env) => {
   return {
     base: viteEnv.VITE_BASE,
     // 插件
-    plugins: [presets(env), PkgConfig(), OptimizationPersist()],
+    plugins: [presets(env), VueTypeImports(), PkgConfig(), OptimizationPersist()],
     // 别名设置
     resolve: {
       alias: {

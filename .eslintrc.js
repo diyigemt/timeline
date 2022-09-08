@@ -34,5 +34,6 @@ module.exports = {
     "import/no-extraneous-dependencies": "off",
     "no-plusplus": "off",
     "no-param-reassign": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
   },
 };

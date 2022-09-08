@@ -1,6 +1,6 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import showCodeMessage from '@/api/code';
-import { formatJsonToUrlParams, instanceObject } from '@/utils/format';
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import showCodeMessage from "@/api/code";
+import { formatJsonToUrlParams, instanceObject } from "@/utils/format";
 
 const BASE_PREFIX = import.meta.env.VITE_API_BASEURL;
 
@@ -12,7 +12,7 @@ const axiosInstance: AxiosInstance = axios.create({
   timeout: 1000 * 30,
   // 请求头
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -43,7 +43,7 @@ axiosInstance.interceptors.response.use(
       ElMessage.error(showCodeMessage(response.status));
       return Promise.reject(response.data);
     }
-    ElMessage.warning('网络连接异常,请稍后再试!');
+    ElMessage.warning("网络连接异常,请稍后再试!");
     return Promise.reject(error);
   },
 );
@@ -66,7 +66,7 @@ const service = {
 
   upload: (url: string, file: FormData | File) =>
     axiosInstance.post(url, file, {
-      headers: { 'Content-Type': 'multipart/form-data' },
+      headers: { "Content-Type": "multipart/form-data" },
     }),
   download: (url: string, data: instanceObject) => {
     window.location.href = `${BASE_PREFIX}/${url}?${formatJsonToUrlParams(data)}`;
