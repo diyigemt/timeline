@@ -25,8 +25,13 @@ declare module '@vue/runtime-core' {
     IRiArticleLine: typeof import('~icons/ri/article-line')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TestBotton: typeof import('./components/TestBotton.vue')['default']
+    TestButton: typeof import('./components/TestButton.vue')['default']
+    TestRender: typeof import('./components/TestRender.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
     TimeLine: typeof import('./components/home/TimeLine.vue')['default']
+    TimeLine0: typeof import('./components/home/TimeLine0.vue')['default']
+    TimeLineSecond: typeof import('./components/home/TimeLineSecond.vue')['default']
     ZhProcess: typeof import('./components/ZhProcess.md')['default']
   }
 }

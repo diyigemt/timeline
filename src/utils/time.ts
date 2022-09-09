@@ -9,3 +9,7 @@ import dayjs from "dayjs";
 export function nowTime(format = "yyyy-MM-dd HH:mm:ss"): string {
   return dayjs().format(format);
 }
+
+export function nowSecond(time: number): string {
+  return dayjs().startOf("day").second(time).format("mm:ss");
+}
