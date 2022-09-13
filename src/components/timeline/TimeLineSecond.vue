@@ -3,7 +3,7 @@
     <div class="side">
       <span v-for="(e, index) in millisecond" :key="e + index" class="second-millisecond" />
     </div>
-    <div class="time" :style="{ '--cur-width': currentWidth1 + 'px' }">{{ time }}</div>
+    <div class="time">{{ time }}</div>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ const props = defineProps<{
   now: number;
   width: number;
 }>();
-const borderSize = 2;
 const millisecond = computed(() => {
   let m = 10;
   if (props.width <= 50) {
@@ -25,14 +24,10 @@ const millisecond = computed(() => {
   }
   return m;
 });
-const currentWidth0 = computed(() => Math.floor(props.width / (millisecond.value - 1)));
-const currentWidth1 = computed(() => Math.floor(props.width / millisecond.value) / 2);
 const style = computed<Partial<CSSStyleDeclaration>>(() => {
-  const translate = currentWidth0.value * props.now - borderSize;
   return {
     width: `${props.width}px`,
     maxWidth: `${props.width}px`,
-    transform: `translateX(-${translate}px)`,
   };
 });
 const time = computed(() => nowSecond(props.now));
@@ -52,7 +47,7 @@ $border-size: 2px;
     line-height: $font-size;
     position: absolute;
     text-align: center;
-    transform: translateX(calc(0px - var(--cur-width)));
+    transform: translateX($border-size);
     top: 0;
     font-size: 14px;
   }
@@ -72,13 +67,8 @@ $border-size: 2px;
         height: 25%;
         border-left: $border-size solid black;
       }
-      &:last-child:before {
-        border-left: none;
-      }
-      &:first-child {
-        &:before {
-          height: 50%;
-        }
+      &:first-child:before {
+        height: 50%;
       }
     }
   }

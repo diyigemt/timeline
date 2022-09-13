@@ -29,9 +29,9 @@ declare module '@vue/runtime-core' {
     TestButton: typeof import('./components/TestButton.vue')['default']
     TestRender: typeof import('./components/TestRender.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
-    TimeLine: typeof import('./components/home/TimeLine.vue')['default']
+    TimeLine: typeof import('./components/timeline/TimeLine.vue')['default']
     TimeLine0: typeof import('./components/home/TimeLine0.vue')['default']
-    TimeLineSecond: typeof import('./components/home/TimeLineSecond.vue')['default']
+    TimeLineSecond: typeof import('./components/timeline/TimeLineSecond.vue')['default']
     ZhProcess: typeof import('./components/ZhProcess.md')['default']
   }
 }

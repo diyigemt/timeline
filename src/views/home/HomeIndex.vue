@@ -1,20 +1,8 @@
 <template>
-  <TimeLine>
-    <div
-      v-for="(e, index) in timeLen * 60"
-      :key="e * index"
-      class="time-item second-item"
-      :style="{ '--base-width': baseWidth }"
-    >
-      {{ e }}
-    </div>
-  </TimeLine>
+  <TimeLine />
 </template>
 
-<script setup lang="ts">
-const timeLen = 7; // 7分钟
-const baseWidth = "30px"; // 默认大小30个像素
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped>
 .time-item {

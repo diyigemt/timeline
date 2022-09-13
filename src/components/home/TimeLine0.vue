@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import { onBeforeRouteLeave } from "vue-router";
-import { Ref, useSlots } from "vue";
+import { Ref } from "vue";
 import { throttle } from "lodash-es";
 import { TimeLineIData } from "@/interface";
 import { TimeLineProps } from "@/types";

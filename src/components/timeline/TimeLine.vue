@@ -18,14 +18,16 @@ const time = 60;
 </script>
 
 <style lang="scss" scoped>
+$left-width: 200px;
+$left-margin-right: 20px;
 .left {
-  $width: 200px;
-  margin-right: 20px;
-  width: $width;
-  min-width: $width;
+  $width: $left-width;
+  margin-right: $left-margin-right;
+  width: $left-width;
+  min-width: $left-width;
 }
 .right {
-  flex-grow: 1;
+  width: calc(100% - #{$left-width + $left-margin-right});
 }
 .timeline-header {
   $header-font-size: 18px;
